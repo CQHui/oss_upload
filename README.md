@@ -13,7 +13,8 @@ Alfred，一款macos的效率工具，是一个让你可以丢掉鼠标的神器
 ### 为什么自己开发
 
 我其实找过很多工具，虽然网上也有类似应用，比如ipic(部分功能付费)。不想折腾的同学可以用这款工具。
-![](https://qihui-picture.oss-cn-hangzhou.aliyuncs.com/2018-07-20/1532053944.png)
+
+<div align=center><img width="90%" height="90%" src="https://qihui-picture.oss-cn-hangzhou.aliyuncs.com/2018-07-20/1532053944.png"/></div>
 
 这款工具本人也是用过一段时间，微博图床免费，但是阿里oss或者七牛都是付费版的。既然如此，那么我就自己开发一款吧（还不是因为穷）
 ps. 本文涉及到的图片都是私人图床上的图片
@@ -21,10 +22,11 @@ ps. 本文涉及到的图片都是私人图床上的图片
 
 ## 如何使用
 
-### 实习效果
+### 最终效果图
 
 复制一张图片，调用alfred，输入oss命令稍等一小会儿，会显示url和md两种返回格式，点击url或者md便可以获得对应地址在剪切板中，粘贴，所见即所得
-![](https://qihui-picture.oss-cn-hangzhou.aliyuncs.com/2018-07-20/%E5%BD%95%E5%B1%8F.gif)
+<div align=center><img width="90%" height="90%" src="https://qihui-picture.oss-cn-hangzhou.aliyuncs.com/2018-07-20/%E5%BD%95%E5%B1%8F.gif"/></div>
+
 
 ### 环境
 
@@ -122,11 +124,12 @@ bucket_name = '<yourBucketName>'
 
 打开alfred，找到oss的workflow，双击下图的脚本图标
 
-![](http://qihui-picture.oss-cn-hangzhou.aliyuncs.com/2018-07-20%2F1532057097.png)
+
+<div align=center><img width="90%" height="90%" src="http://qihui-picture.oss-cn-hangzhou.aliyuncs.com/2018-07-20%2F1532057097.png"/></div>
 
 如果你的python配置和我这儿一样的话，可以不修改。这里需要找到你的环境中的python执行指令，然后执行该脚本
 
-![](http://qihui-picture.oss-cn-hangzhou.aliyuncs.com/2018-07-20%2F1532057285.png)
+<div align=center><img width="90%" height="90%" src="http://qihui-picture.oss-cn-hangzhou.aliyuncs.com/2018-07-20%2F1532057285.png"/></div>
 
 ## 写在最后
 
@@ -139,5 +142,6 @@ https://github.com/CQHui/oss_upload
 
 如果喜欢可以star下，
 如果喜欢的不能自己，可以再悬赏下~
-![](http://qihui-picture.oss-cn-hangzhou.aliyuncs.com/2018-07-20%2F1532057805.png)
+<div align=center><img width="40%" height="40%" src="http://qihui-picture.oss-cn-hangzhou.aliyuncs.com/2018-07-20%2F1532057805.png"/></div>
+
 
