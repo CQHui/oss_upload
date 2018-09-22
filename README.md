@@ -24,7 +24,7 @@ ps. 本文涉及到的图片都是私人图床上的图片
 
 ### 最终效果图
 
-复制一张图片，调用alfred，输入oss命令稍等一小会儿，会显示url和md两种返回格式，点击url或者md便可以获得对应地址在剪切板中，粘贴，所见即所得
+复制一张图片(通过微信的快捷键截图效果飞起)，调用alfred，输入oss命令稍等一小会儿，会显示url和md两种返回格式，点击url或者md便可以获得对应地址在剪切板中，粘贴，所见即所得
 <div align=center><img width="90%" height="90%" src="https://qihui-picture.oss-cn-hangzhou.aliyuncs.com/2018-07-20/%E5%BD%95%E5%B1%8F.gif"/></div>
 
 
@@ -35,6 +35,12 @@ ps. 本文涉及到的图片都是私人图床上的图片
 - 你少不了自己的阿里云oss服务
 - 因为脚本是python写的，所以要有python3环境
 - python3依赖oss2和pyobjc包
+
+开始前的准备
+``` shell
+pip3 install oss2
+pip3 install pyobjc
+```
 
 ### 上码
 
@@ -119,6 +125,8 @@ access_key_id = '<yourAccessKeyId>'
 access_key_secret = '<yourAccessKeySecret>'
 bucket_name = '<yourBucketName>'
 ```
+注：bucket_name需要符合阿里的命名规则,如下图所示
+![](http://qihui-picture.oss-cn-hangzhou.aliyuncs.com/2018-09-22%2F1537613559.png)
 
 ### 配置alfred的workflow
 
