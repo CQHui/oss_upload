@@ -51,7 +51,7 @@ import time
 import oss2
 import json
 
-from AppKit import NSPasteboard, NSPasteboardTypePNG, NSPasteboardTypeTIFF
+from AppKit import NSPasteboard, NSPasteboardTypePNG, NSFilenamesPboardType
 
 access_key_id = '<yourAccessKeyId>'
 access_key_secret = '<yourAccessKeySecret>'
@@ -72,14 +72,12 @@ def get_paste_img_file():
         ret = data.writeToFile_atomically_(filepath, False)    # 将剪切板数据保存为文件
         if ret:   # 判断文件写入是否成功
             return filepath
-    elif NSPasteboardTypeTIFF in data_type:         #TIFF处理： 一般剪切板里都是这种
-        # tiff
-        data = pb.dataForType_(NSPasteboardTypeTIFF)
-        filename = 'HELLO_TIFF.tiff'
-        filepath = '/tmp/%s' % filename
-        ret = data.writeToFile_atomically_(filepath, False)
-        if ret:
-            return filepath
+
+    elif NSFilenamesPboardType in data_type:
+        # file in machine
+        return pb.propertyListForType_(NSFilenamesPboardType)[0]
+
+
 
 
 def upload_file():
