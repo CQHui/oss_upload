@@ -42,89 +42,17 @@ pip3 install oss2
 pip3 install pyobjc
 ```
 
-### 上码
+### 修改环境变量里的参数
 
-``` python
-# Author: chenqihui
-query = "{query}"
-import time
-import oss2
-import json
+打开workflow的环境变量设置，在这里面可以设置workflow的环境变量。
 
-from AppKit import NSPasteboard, NSPasteboardTypePNG, NSFilenamesPboardType
+<div align=center><img width="90%" height="90%" src="http://qihui-picture.oss-cn-hangzhou.aliyuncs.com/2019-11-11%2F1573484905.png"/></div>
 
-access_key_id = '<yourAccessKeyId>'
-access_key_secret = '<yourAccessKeySecret>'
-bucket_name = '<yourBucketName>'
+**修改workflow中的环境变量**
+<div align=center><img width="90%" height="90%" src="http://qihui-picture.oss-cn-hangzhou.aliyuncs.com/2019-11-11%2F1573484555.png"/></div>
 
-def get_paste_img_file():
-    """
-    将剪切板数据保存到本地文件并返回文件路径
-    """
-    pb = NSPasteboard.generalPasteboard()  # 获取当前系统剪切板数据
-    data_type = pb.types()  # 获取剪切c板数据的格式类型
-
-    # 根据剪切板数据类型进行处理
-    if NSPasteboardTypePNG in data_type:          # PNG处理
-        data = pb.dataForType_(NSPasteboardTypePNG)
-        filename = '%s.png' % int(time.time())
-        filepath = '/tmp/%s' % filename            # 保存文件的路径
-        ret = data.writeToFile_atomically_(filepath, False)    # 将剪切板数据保存为文件
-        if ret:   # 判断文件写入是否成功
-            return filepath
-
-    elif NSFilenamesPboardType in data_type:
-        # file in machine
-        return pb.propertyListForType_(NSFilenamesPboardType)[0]
-
-
-
-
-def upload_file():
-
-    auth = oss2.Auth(access_key_id, access_key_secret)
-    # Endpoint以杭州为例，其它Region请按实际情况填写。
-    bucket = oss2.Bucket(auth, 'http://oss-cn-hangzhou.aliyuncs.com', bucket_name)
-    file_name = get_paste_img_file()
-    key_name = file_name[file_name.rfind('/'):]
-    date = time.strftime("%Y-%m-%d", time.localtime())
-    key = date + key_name
-    result = bucket.put_object_from_file(key, file_name)
-    url = result.resp.response.url
-    data = {
-        'items' : [
-            {'title' : 'url', 'arg': url,  "icon":
-                {
-                    'type': 'png',
-                    'path': 'icon.png'
-                }
-             },
-            {'title': 'md', 'arg': '![](%s)' % url, 'icon':
-                {
-                    'type': 'png',
-                    'path': 'icon.png'
-                }
-             }
-        ]
-    }
-    url_result = json.dumps(data)
-    print(url_result)
-
-
-
-if __name__ == '__main__':
-    upload_file()
-```
-
-### 修改脚本里的参数
-
-``` python
-access_key_id = '<yourAccessKeyId>'
-access_key_secret = '<yourAccessKeySecret>'
-bucket_name = '<yourBucketName>'
-```
 注：bucket_name需要符合阿里的命名规则,如下图所示
-![](http://qihui-picture.oss-cn-hangzhou.aliyuncs.com/2018-09-22%2F1537613559.png)
+<div align=center><img width="90%" height="90%" src="http://qihui-picture.oss-cn-hangzhou.aliyuncs.com/2018-09-22%2F1537613559.png"/></div>
 
 ### 配置alfred的workflow
 
@@ -135,7 +63,8 @@ bucket_name = '<yourBucketName>'
 
 如果你的python配置和我这儿一样的话，可以不修改。这里需要找到你的环境中的python执行指令，然后执行该脚本
 
-<div align=center><img width="90%" height="90%" src="http://qihui-picture.oss-cn-hangzhou.aliyuncs.com/2018-07-20%2F1532057285.png"/></div>
+<div align=center><img width="90%" height="90%" src="http://qihui-picture.oss-cn-hangzhou.aliyuncs.com/2019-11-11%2F1573484807.png"/></div>
+
 
 ## 写在最后
 
